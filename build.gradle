@@ -1,5 +1,13 @@
+import javax.tools.JavaCompiler
+
 plugins {
     id 'java'
+}
+
+tasks.withType(JavaCompile) {
+    options.with {
+        encoding = 'UTF-8'
+    }
 }
 
 group 'org.example'
@@ -10,8 +18,14 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    implementation 'ca.uhn.hapi.fhir:hapi-fhir-base:3.7.0'
+    implementation 'ca.uhn.hapi.fhir:hapi-fhir-structures-dstu3:3.7.0'
+    implementation 'ca.uhn.hapi.fhir:hapi-fhir-client:3.7.0'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
@@ -23,3 +37,4 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+

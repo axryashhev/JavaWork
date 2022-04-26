@@ -1,14 +1,32 @@
-package works.two;
+package works;
 
+import Interface.PrintIterator;
+import Util.UtilArray;
+
+import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Work2 {
 
-    public static class One {
-        private static final Random rand = new Random();
+    private PrintIterator printIterator;
+
+    private Work2(PrintIterator printStream) {
+        this.printIterator = printStream;
+    }
+
+    public static Work2 printAction(PrintIterator printStream) {
+        return new Work2(printStream);
+    }
+
+    public One workOne(int[] a, int[] b) {
+        return new One(a, b);
+    }
+
+    public Two workTwo(String text) {
+        return new Two(text);
+    }
+
+    public class One {
         private final int[] a;
         private final int[] b;
 
@@ -17,26 +35,24 @@ public class Work2 {
             this.b = b;
         }
 
-        public static int[] getRandom(int size, int origin, int bound) {
-            return rand.ints(size, origin, bound).toArray();
-        }
-
         public void execute() {
-//            final int[] a = getRandom(5, 1, 5);
-//            final int[] b = getRandom(5, 1, 5);
-
-            System.out.println("Begin: \n" +
+            printIterator.print("Begin: \n" +
                     "a = " + Arrays.toString(a) + '\n' +
                     "b = " + Arrays.toString(b) + '\n');
 
-            Arrays.sort(a);
-            final int[] c = Arrays.stream(b).filter(i -> Arrays.binarySearch(b, i) < 0).toArray();
+            UtilArray.barrierElement(a, 4);
+            UtilArray.insertionSort(b);
 
-            System.out.println(Arrays.toString(a));
-            System.out.println(Arrays.toString(b));
-            System.out.println(Arrays.toString(c));
+            printIterator.print("Sort array: \n" +
+                    "b = " + Arrays.toString(b) + '\n');
 
-            System.out.println("Unique: " + Arrays.toString(unionListUnique(a, c)));
+            final int findItem = Arrays.binarySearch(b, 4);
+            final Serializable textFindItem = findItem < 0 ? "undenfided" : findItem;
+
+            printIterator.print("First: " + UtilArray.barrierElement(a, 4) + '\n');
+            printIterator.print("Second: " +  textFindItem + '\n');
+
+            printIterator.print("Unique: " + Arrays.toString(unionListUnique(a, b)) + '\n');
         }
 
         private int[] unionListUnique(int[] a, int[] c) {
@@ -58,7 +74,7 @@ public class Work2 {
         }
     }
 
-    public static class Two {
+    public class Two {
         private String word;
 
         public Two(String word) {
@@ -81,7 +97,7 @@ public class Work2 {
                     }
                 }
             }
-            System.out.println(Arrays.toString(mas));
+            printIterator.print(Arrays.toString(mas));
         }
     }
 }
