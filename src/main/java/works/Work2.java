@@ -7,34 +7,26 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Work2 {
-
-    private PrintIterator printIterator;
-
+    private final PrintIterator printIterator;
     private Work2(PrintIterator printStream) {
         this.printIterator = printStream;
     }
-
     public static Work2 printAction(PrintIterator printStream) {
         return new Work2(printStream);
     }
-
     public One workOne(int[] a, int[] b) {
         return new One(a, b);
     }
-
     public Two workTwo(String text) {
         return new Two(text);
     }
-
     public class One {
         private final int[] a;
         private final int[] b;
-
         public One(int[] a, int[] b) {
             this.a = a;
             this.b = b;
         }
-
         public void execute() {
             printIterator.print("Begin: \n" +
                     "a = " + Arrays.toString(a) + '\n' +

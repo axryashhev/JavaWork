@@ -28,7 +28,7 @@ class ItemList {
 
 public class Work3 {
 
-    private PrintIterator printIterator;
+    private final PrintIterator printIterator;
 
     private Work3(PrintIterator printStream) {
         this.printIterator = printStream;
@@ -45,7 +45,7 @@ public class Work3 {
 
     public void setData(List<Integer> list) {
         printIterator.print("Set data: ");
-        list.forEach(result -> System.out.print(result + " "));
+        list.forEach(result -> printIterator.print(result + " "));
         printIterator.print("\n");
         this.data.add(this.convertList(list));
     }
@@ -75,10 +75,10 @@ public class Work3 {
             printIterator.print("{ " + result.getId() + ": " + result.getValue() + " }, ");
         });
         double result = avg/count;
-        if(result == Double.NaN)
+        if(Double.isNaN(result))
             result = 0;
 
-        printIterator.print("\nAvg: " + result);
+        printIterator.print("\nAvg: " + result + '\n');
         avg = 0.0;
         count = 0;
     }

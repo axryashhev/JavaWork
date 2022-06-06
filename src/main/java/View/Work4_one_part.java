@@ -3,16 +3,14 @@ package View;
 import example.LabWork1;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Work4_one_part {
     private JPanel jPanel;
     private JButton BtnTab;
     private JButton infinityRowButton;
     private JTextArea textArea1;
+    private JScrollPane scrollPane;
     private JTextArea textArea2;
-
 
     public Work4_one_part() {
         BtnTab.addActionListener(actionEvent -> LabWork1.printAction(text -> textArea1.setText(textArea1.getText() + text)).partOne());

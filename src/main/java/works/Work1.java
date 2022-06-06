@@ -15,7 +15,6 @@ public class Work1 {
         @NonNull
         double a, b, from, to, dx;
 
-
         PrintIterator printIterator;
 
         public double f(double x) {
@@ -78,7 +77,7 @@ public class Work1 {
                     T = (Math.sin(2 * n - 1) * x) / (2 * n - 1);
                 }
 //                printIterator.print("  " + s + ' ');
-                printIterator.print("  " + x + ' ');
+                printIterator.print("  " + x + '\n');
                 x+=dX;
             }
 
