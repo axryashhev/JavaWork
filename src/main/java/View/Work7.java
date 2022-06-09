@@ -72,7 +72,7 @@ public class Work7 {
                     new Student(2, "Student3", "Faculty3", 1, "PI"),
                     new Student(3, "Student4", "Faculty4", 4, "AP"));
 
-            behaviorSubject.onNext("Create data");
+            behaviorSubject.onNext("Create data!");
         }
     }
 
